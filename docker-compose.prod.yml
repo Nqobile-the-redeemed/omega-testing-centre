@@ -192,7 +192,7 @@ services:
   valkey:
     image: 'valkey/valkey:alpine'
     ports:
-        - '${FORWARD_VALKEY_PORT:-6379}:6379'
+        - '${FORWARD_VALKEY_PORT:-6378}:6379'
     volumes:
         - 'sail-valkey:/data'
     networks:
