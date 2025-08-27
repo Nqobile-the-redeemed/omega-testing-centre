@@ -18,4 +18,4 @@ RUN composer install --no-dev --optimize-autoloader
 
 EXPOSE 8082
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8082"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
