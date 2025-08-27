@@ -1,5 +1,5 @@
 # Use official PHP image (Debian/Ubuntu base included)
-FROM php:8.2-cli
+FROM php:8.4-fpm-alpine
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -19,7 +19,7 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # Expose application port
-EXPOSE 8000
+EXPOSE 8082
 
 # Run Laravel API (no nginx, no node)
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8082"]
