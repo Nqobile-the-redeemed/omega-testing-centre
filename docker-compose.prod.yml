@@ -14,7 +14,7 @@ services:
       APP_DEBUG: false
       APP_KEY: base64:YOUR_APP_KEY
       DB_HOST: pgsql
-      DB_PORT: 5432
+      DB_PORT: 5433
       DB_DATABASE: ${DB_DATABASE}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
@@ -26,10 +26,10 @@ services:
       - pgsql
       - valkey
       - meilisearch
-    command: php artisan serve --host=0.0.0.0 --port=80
+    command: php artisan serve --host=0.0.0.0 --port=8082
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -45,7 +45,7 @@ services:
         POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
     volumes:
         - 'sail-pgsql:/var/lib/postgresql/data'
-        - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+        - "./vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql"
     networks:
         - sail
     healthcheck:
