@@ -24,7 +24,6 @@ services:
       - sail
     depends_on:
       - pgsql
-      - valkey
       - meilisearch
     command: php artisan serve --host=0.0.0.0 --port=80
     restart: unless-stopped
