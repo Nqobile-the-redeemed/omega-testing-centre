@@ -115,10 +115,10 @@ services:
     command: >
       sh -c "php artisan config:cache &&
              php artisan route:cache &&
-             php artisan queue:work valkey --verbose --tries=3 --timeout=90 --sleep=3 --max-jobs=1000 --max-time=3600"
+             php artisan queue:work --verbose --tries=3 --timeout=90 --sleep=3 --max-jobs=1000 --max-time=3600"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "php", "artisan", "queue:monitor", "valkey:default", "--max=1000"]
+      test: ["CMD", "php", "artisan", "queue:monitor", "database:default", "--max=1000"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -145,10 +145,10 @@ services:
     command: >
       sh -c "php artisan config:cache &&
              php artisan route:cache &&
-             php artisan queue:work valkey --verbose --tries=3 --timeout=90 --sleep=3 --max-jobs=1000 --max-time=3600"
+             php artisan queue:work --verbose --tries=3 --timeout=90 --sleep=3 --max-jobs=1000 --max-time=3600"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "php", "artisan", "queue:monitor", "valkey:default", "--max=1000"]
+      test: ["CMD", "php", "artisan", "queue:monitor", "database:default", "--max=1000"]
       interval: 30s
       timeout: 10s
       retries: 3
