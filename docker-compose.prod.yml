@@ -209,7 +209,7 @@ services:
     image: "redis:alpine"
     restart: unless-stopped
     ports:
-      - "${FORWARD_REDIS_PORT:-6379}:6379"
+      - "${REDIS_PORT:-6378}:6379"
     volumes:
       - "sail-redis-prod:/data"
     networks:
