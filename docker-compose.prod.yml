@@ -9,6 +9,7 @@ services:
       - "host.docker.internal:host-gateway"
     ports:
       - "${APP_PORT:-8082}:80"
+      - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
     environment:
       DB_DATABASE: ${DB_DATABASE}
       DB_USERNAME: ${DB_USERNAME}
@@ -25,7 +26,7 @@ services:
   pgsql:
     image: 'postgres:17'
     ports:
-        - '${FORWARD_DB_PORT:-5433}:5432'
+        - '${FORWARD_DB_PORT:-5432}:5432'
     environment:
         PGPASSWORD: '${DB_PASSWORD}'
         POSTGRES_DB: '${DB_DATABASE}'
